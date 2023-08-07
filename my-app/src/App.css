@@ -1,0 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  max-width: 500px;
+  margin: 0;
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  font-size: 12px;
+  min-height: 40px;
+  min-width: 40px;
+  transform: rotate(45deg);
+  margin: 30px;
+}
+
+.square-content {
+  transform: rotate(-45deg);
+}
