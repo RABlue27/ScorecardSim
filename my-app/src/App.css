@@ -17,8 +17,10 @@
   min-width: 40px;
   transform: rotate(45deg);
   margin: 30px;
+  user-select: none; /* Prevents text selection */
 }
 
 .square-content {
   transform: rotate(-45deg);
 }
+

@@ -1,18 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import './App.css';
 
 const GridSquare = ({ text }) => {
+  const [borderState, setBorderState] = useState(0);
+
+  const increaseBorder = () => {
+    if (borderState < 4) {
+      setBorderState(borderState + 1);
+    }
+  };
+
+  const decreaseBorder = () => {
+    if (borderState > 0) {
+      setBorderState(borderState - 1);
+    }
+  };
+
+  const squareStyle = {
+    borderRight: borderState >= 1 ? '2px solid black' : '1px solid gray',
+    borderTop: borderState >= 2 ? '2px solid black' : '1px solid gray',
+    borderLeft: borderState >= 3 ? '2px solid black' : '1px solid gray',
+    borderBottom: borderState >= 4 ? '2px solid black' : '1px solid gray',
+    backgroundColor: borderState >= 4 ? '#bbb' : 'white',
+  };
+
   return (
-    <div className="square">
-      <div className="square-content">{text}</div>
+    <div className="button-box">
+      <button onClick={increaseBorder}> ++ </button> 
+      <button onClick={decreaseBorder}> -- </button> 
+      <div className="square" style={squareStyle} >
+        <div className="square-content" >{text}</div>
+      </div>
     </div>
   );
 };
 
-
 function App() {
-  const gridData = []; // Array to hold the custom text for each square
+  const gridData = [];
 
   for (let i = 0; i < 10; i++) {
     const row = [];
