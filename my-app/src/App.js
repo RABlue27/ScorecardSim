@@ -27,11 +27,21 @@ const GridSquare = ({ text }) => {
 
   return (
     <div className="button-box">
-      <button onClick={increaseBorder}> ++ </button> 
-      <button onClick={decreaseBorder}> -- </button> 
       <div className="square" style={squareStyle} >
         <div className="square-content" >{text}</div>
       </div>
+      <button onClick={increaseBorder}> ++ </button> 
+      <button onClick={decreaseBorder}> -- </button> 
+    </div>
+  );
+};
+
+const Lineup = ( { name }) => {
+  return (
+    <div>
+      <textarea>
+        {name}
+      </textarea>
     </div>
   );
 };
@@ -50,7 +60,8 @@ function App() {
   return (
     <div className="grid-container">
       {gridData.map((row, rowIndex) => (
-        <div key={rowIndex} className="grid-row">
+        <div key={rowIndex} className="grid-row">    
+          <Lineup /> 
           {row.map((text, columnIndex) => (
             <GridSquare key={columnIndex} text={text} />
           ))}
