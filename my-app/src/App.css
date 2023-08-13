@@ -42,6 +42,7 @@
 
 .square-content {
   transform: rotate(-45deg);
+  width: 32px;
 }
 
 .input-container {
@@ -59,4 +60,8 @@
 .lineup-name {
   height: 50px;
   width: 200px;
+}
+
+textarea {
+  margin-top: 36px;
 }
