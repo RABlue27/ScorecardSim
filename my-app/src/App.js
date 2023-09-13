@@ -52,9 +52,9 @@ const Lineup = ({ name, onChange }) => {
 function App() {
   const [gridData, setGridData] = useState(() => {
     const data = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i <= 8; i++) {
       const row = [];
-      for (let j = 0; j < 8; j++) {
+      for (let j = 0; j <= 8; j++) {
         row.push('');
       }
       data.push(row);
