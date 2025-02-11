@@ -5,15 +5,11 @@ const GridSquare = ({ text, onChange }) => {
   const [borderState, setBorderState] = useState(0);
 
   const increaseBorder = () => {
-    if (borderState < 4) {
-      setBorderState(borderState + 1);
-    }
+    if (borderState < 4) setBorderState(borderState + 1);
   };
 
   const decreaseBorder = () => {
-    if (borderState > 0) {
-      setBorderState(borderState - 1);
-    }
+    if (borderState > 0) setBorderState(borderState - 1);
   };
 
   const squareStyle = {
@@ -34,47 +30,30 @@ const GridSquare = ({ text, onChange }) => {
           className="square-content"
         />
       </div>
-      <button onClick={increaseBorder}> ++ </button>
-      <button onClick={decreaseBorder}> -- </button>
+      <div className="button-group">
+        <button onClick={increaseBorder}>++</button>
+        <button onClick={decreaseBorder}>--</button>
+      </div>
     </div>
   );
 };
 
-
-const Lineup = ({ name, onChange }) => {
+const Lineup = ({ value, onChange }) => {
   return (
-    <div>
-      <textarea value={name.value} onChange={onChange} />
-    </div>
+    <textarea
+      className="lineup-name"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    />
   );
 };
 
 function App() {
-  const [gridData, setGridData] = useState(() => {
-    const data = [];
-    for (let i = 0; i <= 8; i++) {
-      const row = [];
-      for (let j = 0; j <= 8; j++) {
-        row.push('');
-      }
-      data.push(row);
-    }
-    return data;
-  });
+  const [gridData, setGridData] = useState(() => 
+    Array(9).fill().map(() => Array(9).fill(''))
+  );
 
-  const [rowNames, setRowNames] = useState(() => {
-    const names = [];
-    for (let i = 0; i < 10; i++) {
-      names.push('');
-    }
-    return names;
-  });
-
-  const handleTextChange = (rowIndex, columnIndex, newText) => {
-    const newData = [...gridData];
-    newData[rowIndex][columnIndex] = newText;
-    setGridData(newData);
-  };
+  const [rowNames, setRowNames] = useState(() => Array(9).fill(''));
 
   const handleRowNameChange = (index, newName) => {
     const newRowNames = [...rowNames];
@@ -82,19 +61,25 @@ function App() {
     setRowNames(newRowNames);
   };
 
+  const handleTextChange = (rowIndex, colIndex, newText) => {
+    const newData = [...gridData];
+    newData[rowIndex][colIndex] = newText;
+    setGridData(newData); // This was the missing line
+  };
+
   return (
     <div className="grid-container">
       {gridData.map((row, rowIndex) => (
         <div key={rowIndex} className="grid-row">
           <Lineup
-            name={rowNames[rowIndex]}
+            value={rowNames[rowIndex]}
             onChange={(newName) => handleRowNameChange(rowIndex, newName)}
           />
-          {row.map((text, columnIndex) => (
+          {row.map((text, colIndex) => (
             <GridSquare
-              key={columnIndex}
+              key={colIndex}
               text={text}
-              onChange={(newText) => handleTextChange(rowIndex, columnIndex, newText)}
+              onChange={(newText) => handleTextChange(rowIndex, colIndex, newText)}
             />
           ))}
         </div>
