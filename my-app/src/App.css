@@ -1,67 +1,55 @@
-.app-container {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.grid-and-inputs {
-  display: flex;
-  align-items: flex-start;
-}
-
 .grid-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 70%; /* Add this line */
-  margin: 0 auto;
-  height: 100vh;
-  margin-top: 25px;;
+  padding: 20px;
 }
 
 .grid-row {
   display: flex;
-  justify-content: center;
-  gap: 5px; /* Adjust the gap as needed */
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.button-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
 }
 
 .square {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  font-size: 12px;
   height: 40px;
   width: 40px;
   transform: rotate(45deg);
-  margin: 30px;
-  user-select: none; /* Prevents text selection */
+  background-color: white;
 }
 
 .square-content {
   transform: rotate(-45deg);
   width: 32px;
+  border: none;
+  background: transparent;
+  text-align: center;
 }
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.input-row {
-  display: flex;
-  gap: 10px;
-}
-
 
 .lineup-name {
   height: 50px;
   width: 200px;
+  margin-right: 15px;
+  resize: none;
 }
 
-textarea {
-  margin-top: 36px;
+.button-group {
+  display: flex;
+  gap: 5px;
+}
+
+.button-group button {
+  cursor: pointer;
+  padding: 2px 8px;
 }
